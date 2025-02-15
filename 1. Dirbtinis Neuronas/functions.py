@@ -1,9 +1,7 @@
-#
 import random
 import matplotlib.pyplot as plt
 import math
 import numpy as np
-
 
 #seed that was used for the final project version was 100 (333 is impossible for reference)
 random.seed(100)
@@ -117,9 +115,26 @@ def plotInputAndDecisionBoundaries(givenListOne, givenListTwo, selectedWeights):
     for i, (w1, w2, b) in enumerate(selectedWeights):
         y_vals = - (w1 / w2) * x_vals - (b / w2)  # Compute y values for line
         plt.plot(x_vals, y_vals, color=colors[i], linestyle='--', label=f"Decision Boundary {i+1}")
+
+
+        #Vector starting point
+        x_start = -b / w1 if w1 != 0 else 0
+        y_start = -b / w2 if w2 != 0 else 0
+
+        #Vector normalization
+        norm_factor = np.sqrt(w1**2 + w2**2)
+        w1_norm = w1 / norm_factor
+        w2_norm = w2 / norm_factor
+
+        # Scale vector for visibility
+        vector_scale = 2
+        plt.arrow(x_start, y_start, w1_norm * vector_scale, w2_norm * vector_scale,
+                  color=colors[i], head_width=0.3, head_length=0.5, label=f"Weight Vector {i+1}")
     
     plt.xlabel("x")
     plt.ylabel("y")
     plt.title("Decision Boundaries and input Points")
     plt.legend()
+    #To show that it is perpendicular
+    plt.axis('equal')
     plt.show()
