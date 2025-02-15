@@ -11,7 +11,7 @@ inputClassTwo = functions.generateInputClass(center_x=5, center_y=5, spread=5)
 
 # Check the generated input points
 #print(inputClassOne)
-# print(inputClassTwo)
+#print(inputClassTwo)
 
 #Plot the generated input points
 functions.plotInput(inputClassOne, inputClassTwo)
@@ -19,7 +19,10 @@ functions.plotInput(inputClassOne, inputClassTwo)
 #Neuron activation from generated points
 outputListThreshold, iterationsThreshold = functions.neuron(inputClassOne, inputClassTwo, 1, 3)
 outputListSigmoid, iterationsSigmoid = functions.neuron(inputClassOne, inputClassTwo, 2, 3)
-print(outputListThreshold)
+
+# Check the generated weight lists
+#print(outputListSigmoid)
+#print(outputListThreshold)
 
 #Plot the input points and the seperating lines from the found weights
 functions.plotInputAndDecisionBoundaries(inputClassOne, inputClassTwo, outputListThreshold)
